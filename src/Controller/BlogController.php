@@ -8,11 +8,22 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class BlogController extends AbstractController
 {
-    #[Route('/blog', name: 'blog.index')]
+    #[Route('/', name: 'blog.index')]
     public function index(): Response
     {
+        $posts = [
+            [
+                "title" => "Article 1",
+                "description" => "Description 1"
+            ],
+            [
+                "title" => "Article 2",
+                "description" => "Description 2"
+            ]
+        ];
+
         return $this->render('blog/index.html.twig', [
-            'controller_name' => 'ThomasController',
+            "posts" => $posts
         ]);
     }
 
